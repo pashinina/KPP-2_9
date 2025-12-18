@@ -1,0 +1,25 @@
+#login-container {
+  height: 100%;
+}
+
+.chat-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 380px;
+}
+
+.login-box input {
+  border-radius: 8px;
+}

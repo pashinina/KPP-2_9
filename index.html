@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Matrix Chat</title>
+
+  <!-- Підключаємо бібліотеки -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+
+  <!-- Підключення логіки компонентів -->
+  <script src="./login/login.js"></script>
+  <script src="./sidebar/sidebar.js"></script>
+
+  <!-- Підключення стилів -->
+  <link rel="stylesheet" href="./login/login.css">
+  <link rel="stylesheet" href="./sidebar/sidebar.css">
+
+  <style>
+    .chat-container { height: 80vh; }
+    .chat-area { flex-grow: 1; }
+    body {
+          min-height: 100vh;
+    }
+    .chat-container {
+      min-height: 80vh;
+    }
+    #sidebar-container {
+  height: 100%;
+}
+    .sidebar {
+      min-width: 250px;
+    }
+    .chat-area {
+       height: 100%;
+      flex-grow: 1;
+    }
+    .message-input {
+      min-height: 80px;
+    }
+    .room-list li {
+      padding: 8px;
+      transition: background-color 0.2s;
+    }
+    .room-list li:hover {
+      background-color: #e0e7ff;
+    }
+    .room-list li.active {
+      background-color: #bfdbfe;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+
+
+<body class="bg-gray-100 flex items-center justify-center p-4">
+
+  <div x-data="chatApp()" class="chat-container bg-white rounded-lg shadow-lg flex w-full max-w-5xl">
+    <div id="sidebar-container"></div>
+    <div class="chat-area p-4 flex flex-col">
+      <div id="login-container"></div>
+    </div>
+  </div>
+
+  <!-- Завантаження HTML компонентів -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // login.html
+      fetch('./login/login.html')
+        .then(r => r.text())
+        .then(html => document.getElementById('login-container').innerHTML = html)
+        .catch(e => console.error('Login load error:', e));
+
+      // sidebar.html
+      fetch('./sidebar/sidebar.html')
+        .then(r => r.text())
+        .then(html => document.getElementById('sidebar-container').innerHTML = html)
+        .catch(e => console.error('Sidebar load error:', e));
+    });
+  </script>
+
+  <!-- Основна логіка -->
+  <script>
+    function chatApp() {
+      return {
+        username: '',
+        password: '',
+        accessToken: '',
+        userId: '',
+        roomId: '',
+        joinRoomId: '',
+        newRoomName: '',
+        newRoomId: '',
+        rooms: [],
+        messages: [],
+        newMessage: '',
+        inviteUser: '',
+        error: '',
+        lastSyncToken: '',
+        login,
+        createRoom,
+        fetchRoomsWithNames,
+      }
+    }
+  </script>
+
+</body>
+</html>
