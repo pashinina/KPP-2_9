@@ -1,5 +1,8 @@
 #login-container {
-  height: 100%;
+  width: 400px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
 }
 
 .chat-area {
@@ -13,11 +16,6 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
-.login-container {
-  width: 100%;
-  max-width: 380px;
 }
 
 .login-box input {

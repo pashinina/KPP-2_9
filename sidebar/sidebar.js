@@ -73,6 +73,7 @@ function switchRoom(roomId) {
   this.messages = [];
   this.lastSyncToken = '';
   this.fetchMessages();
+  this.fetchRoomMembers();
 }
 
 async function inviteUserToRoom() {

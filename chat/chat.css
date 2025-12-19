@@ -1,5 +1,23 @@
 .chat-root {
   height: 100%;
+   width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  flex-shrink: 0;
+}
+
+.chat-messages {
+  flex: 1;
+   width: 100%;
+  overflow-y: auto;
+  padding: 12px;
+}
+
+.message {
+  margin-bottom: 8px;
 }
 
 .message-input {
@@ -7,6 +25,10 @@
   resize: none;
 }
 
-.messages {
-  min-height: 200px;
+.chat-input {
+  width: 100%;
+}
+
+.chat-footer {
+  flex-shrink: 0;
 }
