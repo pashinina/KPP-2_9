@@ -6,25 +6,20 @@
       <ul class="space-y-1">
         <template x-for="room in rooms" :key="room.roomId">
           <li
-            @click="switchRoom ? switchRoom(room.roomId) : null"
+            @click="switchRoom(room.roomId)"
             :class="{ 'active': room.roomId === roomId }"
             x-text="room.name || room.roomId"
-            class="cursor-pointer rounded-lg"
+            class="cursor-pointer rounded-lg list-none"
           ></li>
         </template>
       </ul>
-    </div>   
+    </div>
 
     <div class="mt-4">
-      <input x-model="newRoomName"
-             placeholder="New room name"
-             class="border p-2 w-full mb-2 rounded">
-
-      <button @click="createRoom()"
-              class="bg-indigo-500 text-white p-2 w-full rounded hover:bg-indigo-600 transition">
+      <input x-model="newRoomName" placeholder="New room name" class="border p-2 w-full mb-2 rounded">
+      <button @click="createRoom()" class="bg-indigo-500 text-white p-2 w-full rounded hover:bg-indigo-600 transition">
         Create Room
       </button>
-
       <p x-show="newRoomId" class="text-sm text-gray-600 mt-1">
         Room ID: <span x-text="newRoomId"></span>
       </p>

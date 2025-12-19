@@ -1,0 +1,12 @@
+.chat-root {
+  height: 100%;
+}
+
+.message-input {
+  min-height: 70px;
+  resize: none;
+}
+
+.messages {
+  min-height: 200px;
+}
