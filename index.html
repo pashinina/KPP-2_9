@@ -14,49 +14,59 @@
   <script src="./chat/chat.js"></script>
   <script src="./user/user.js"></script>
 
-
-  <!-- Підключення стилів -->
+   <!-- Підключення стилів -->
   <link rel="stylesheet" href="./login/login.css">
   <link rel="stylesheet" href="./sidebar/sidebar.css">
   <link rel="stylesheet" href="./chat/chat.css">
   <link rel="stylesheet" href="index.css">
-
 </head>
 
+<body class="bg-gray-100 h-screen">
 
+  <!-- ROOT APP -->
+  <div x-data="chatApp()" class="flex w-full h-full">
 
-<body class="index-container bg-gray-100">
-
-
-  <div x-data="chatApp()" class="flex w-full h-screen">
+    <!-- LEFT: ROOMS -->
     <div id="sidebar-container"></div>
-    <div class="chat-area p-4 flex flex-col">
-      <div id="login-container"></div>
-      <div id="chat-container" x-show="accessToken" class="chat-container"></div>
 
+    <!-- CENTER: CHAT -->
+    <div class="chat-area p-4 flex flex-col flex-1">
+      <div id="login-container"></div>
+      <div
+        id="chat-container"
+        x-show="accessToken"
+        class="flex-1" style="width: 100%;"
+      ></div>
     </div>
+
+    <!-- RIGHT: USERS -->
+    <div
+      id="users-container"
+      x-show="accessToken && roomId"
+      class="users-wrapper"
+    ></div>
+
   </div>
 
   <!-- Завантаження HTML компонентів -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-      // login.html
       fetch('./login/login.html')
         .then(r => r.text())
-        .then(html => document.getElementById('login-container').innerHTML = html)
-        .catch(e => console.error('Login load error:', e));
+        .then(html => document.getElementById('login-container').innerHTML = html);
 
-      // sidebar.html
       fetch('./sidebar/sidebar.html')
         .then(r => r.text())
-        .then(html => document.getElementById('sidebar-container').innerHTML = html)
-        .catch(e => console.error('Sidebar load error:', e));
-      
-        fetch('./chat/chat.html')
+        .then(html => document.getElementById('sidebar-container').innerHTML = html);
+
+      fetch('./chat/chat.html')
         .then(r => r.text())
-        .then(html => document.getElementById('chat-container').innerHTML = html)
-        .catch(e => console.error('Chat load error:', e));
+        .then(html => document.getElementById('chat-container').innerHTML = html);
+
+      fetch('./user/user.html')
+        .then(r => r.text())
+        .then(html => document.getElementById('users-container').innerHTML = html);
 
     });
   </script>
@@ -79,19 +89,18 @@
         inviteUser: '',
         error: '',
         lastSyncToken: '',
+        roomMembers: [],
         login,
         createRoom,
         fetchRoomsWithNames,
-         joinRoom,
-          inviteUserToRoom,
-          getRoomName,
-          switchRoom,
-          sendMessage,
-          fetchMessages,
-          copyRoomId,
-          fetchRoomMembers,
-          roomMembers: [],
-
+        joinRoom,
+        inviteUserToRoom,
+        getRoomName,
+        switchRoom,
+        sendMessage,
+        fetchMessages,
+        copyRoomId,
+        fetchRoomMembers,
       }
     }
   </script>

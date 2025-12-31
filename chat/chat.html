@@ -1,5 +1,6 @@
 <template x-if="accessToken">
-  <div class="chat-root">
+  <div class="chat-root flex flex-col h-full relative">
+
 
     <div class="chat-header mb-2 p-2 bg-gray-200 rounded text-sm break-words flex justify-between items-start gap-3">
       <div>
@@ -34,18 +35,6 @@
     <div class="chat-footer mt-3 flex gap-2">
       <textarea x-model="newMessage" class="message-input border rounded p-2 w-full" placeholder="Type a message..."></textarea>
       <button @click="sendMessage()" class="bg-green-500 text-white px-4 rounded hover:bg-green-600">Send</button>
-    </div>
-
-    <div class="chat-footer mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
-      <div>
-        <input x-model="inviteUser" class="border p-2 w-full mb-1 rounded" placeholder="Invite user">
-        <button @click="inviteUserToRoom()" class="bg-purple-500 text-white p-2 w-full rounded">Invite</button>
-      </div>
-
-      <div>
-        <input x-model="joinRoomId" class="border p-2 w-full mb-1 rounded" placeholder="Room ID to join">
-        <button @click="joinRoom()" class="bg-yellow-500 text-white p-2 w-full rounded">Join Room</button>
-      </div>
     </div>
 
   </div>

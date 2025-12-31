@@ -89,3 +89,11 @@ async function copyRoomId() {
     alert('Не вдалося скопіювати. Скопіюй вручну: ' + this.roomId);
   }
 }
+
+function switchRoom(roomId) {
+  this.roomId = roomId;
+  this.messages = [];
+  this.lastSyncToken = '';
+  this.fetchMessages();
+  this.fetchRoomMembers(); 
+}

@@ -32,3 +32,13 @@
 .chat-footer {
   flex-shrink: 0;
 }
+
+.users-panel {
+  width: 280px;
+  min-width: 280px;
+  height: 100%;
+  border-left: 1px solid #e5e7eb;
+  background: #ffffff;
+  padding: 12px;
+  overflow-y: auto;
+}
