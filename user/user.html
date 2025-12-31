@@ -21,6 +21,13 @@
             <span class="text-gray-500">
               (<span x-text="member.userId.split(':')[0].substring(1)"></span>)
             </span>
+               <button
+          @click.stop="kickUser(member.userId)"
+          class="text-red-600 hover:text-red-800 text-xs font-bold"
+          title="Викинути з кімнати"
+        >
+          ×
+        </button>
           </li>
         </template>
       </ul>
